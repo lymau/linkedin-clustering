@@ -43,4 +43,8 @@ PowerShell
 > $env:FLASK_ENV = "development"
 > flask run
 ```
-5. Start developing!
+5. Add database instance.
+```shell
+$ flask init-db
+```
+6. Start developing!
