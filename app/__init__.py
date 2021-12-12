@@ -25,9 +25,11 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # example: route
-    @app.route('/')
-    def index():
-        return 'Kelompok 6 Microcredential UI 01'
+    from . import db, auth, predict
+    # register the database
+    db.init_app(app)
+    # register the auth, predict blueprint
+    app.register_blueprint(auth.bp)
+    app.register_blueprint(predict.bp)
 
     return app
