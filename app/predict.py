@@ -69,6 +69,7 @@ def create():
                 (body, g.user['id'], cluster)
             )
             db.commit()
+            flash("Post has been successfully created. It's in cluster "+ str(cluster))
             return redirect(url_for('predict.index'))
 
     return render_template('predict/create.html')
