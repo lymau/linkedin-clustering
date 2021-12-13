@@ -1,10 +1,11 @@
 import os
-
 from flask import Flask
-
 
 def create_app(test_config=None):
     """Any configuration, registration, and other setup the application needs will happen inside the function, then the application will be returned."""
+    # ignore any warning
+    import warnings
+    warnings.filterwarnings("ignore")
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
