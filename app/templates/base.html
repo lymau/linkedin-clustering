@@ -29,13 +29,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}{% endblock %} - Text Clustering Description</title>
+    <title>{% block title %}{% endblock %} - Description Text Clustering</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/a1a695add7.js"></script>
 </head>
 <body>
 
 {#navbar#}
-<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="/">
             Text Clustering Description
@@ -70,12 +71,21 @@
     </div>
 </nav>
 
-<section class="section">
+<section class="section has-background-light">
     <div class="container">
         {% block header %}{% endblock %}
         {% block content %}{% endblock %}
     </div>
 </section>
+
+{#footer#}
+<footer class="footer has-background-light">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Description Text Clustering</strong> by Group 6 UI-01 Microcredential Associate Data Scientist. Source Code is on <a href="https://github.com/lymau/linkedin-clustering">Github</a>.
+        </p>
+    </div>
+</footer>
 <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>
