@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1 class="title has-text-centered">{% block title %}About{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <section class="card">
+        <div class="card-content">
+            <div class="media">
+                <div class="media-content">
+                    <p class="title is-4 has-text-centered">Deskripsi Project Tugas Akhir Microcredential Associate Data Scientist</p>
+                </div>
+            </div>
+            <div class="content">
+                <b>Nama Peserta:</b><br/>
+                <ol>
+                    <li>Nur Sabilly</li>
+                    <li>Timoty Des Christian</li>
+                    <li>Olivia Diaz Fauziah</li>
+                </ol>
+                <b>Universitas Host:</b> Universitas Indonesia <br/>
+                <b>Kelas:</b> Microcredential-002-UI-01<br/>
+                <b>Kelompok:</b> 6 <br/>
+                <b>Tema Project Kelompok:</b> Text Clustering dari Executive Summary User Profile
+                LinkedIn <br>
+                <b>Model yang Digunakan</b><br>
+                <p class="has-text-justified">Kami menggunakan K-Means Clustering, yaitu algoritma unsupervised machine learning sebagai metode untuk
+                melakukan cluster analysis, dan mengelompokkan data menjadi beberapa cluster. Dengan menggunakan metode
+                ini, kita dapat mengelompokkan data menurut karakteristik tertentu, dan membedakannya dengan
+                kelompok/kluster lainnya.</p>
+                <p class="has-text-justified">Objek yang akan kami kelompokkan adalah executive summary dari pengguna LinkedIn yang diambil melalui
+                LinkedIn API. Kami mengumpulkan data sebanyak 1267 records. Data ini juga dapat kita gunakan untuk
+                mengetahui keyword apa yang paling banyak digunakan pada executive summary pengguna LinkedIn, sehingga
+                dapat menjadi referensi dalam penulisan/penyusunan executive summary LinkedIn.</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

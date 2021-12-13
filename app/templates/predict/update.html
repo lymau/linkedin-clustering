@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Edit "{{ post['body'] }}"{% endblock %}</h1>
+    <h1 class="title has-text-centered">{% block title %}Edit Post{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
-  <form method="post">
-{#    <label for="title">Title</label>#}
-{#    <input name="title" id="title"#}
-{#      value="{{ request.form['title'] or post['title'] }}" required>#}
-    <label for="body">Body</label>
-    <textarea name="body" id="body">{{ request.form['body'] or post['body'] }}</textarea>
-    <input type="submit" value="Save">
-  </form>
-  <hr>
-  <form action="{{ url_for('predict.delete', id=post['id']) }}" method="post">
-    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
-  </form>
+    <form method="POST" class="box">
+        <div class="field">
+            <label for="body" class="label">Text</label>
+            <textarea class="textarea is-info" name="body" id="body"
+                      placeholder="Description text here ...">{{ request.form['body'] or post['body'] }}</textarea>
+        </div>
+        <div class="field">
+            <button type="submit" class="button is-info is-fullwidth">
+                Update & Predict
+            </button>
+        </div>
+    </form>
 {% endblock %}

@@ -1,29 +1,3 @@
-{#<!DOCTYPE HTML>#}
-{#<meta name="viewport" content="width=device-width, initial-scale=1">#}
-{#<title>{% block title %}{% endblock %} - Flaskr</title>#}
-{# static assets #}
-{#<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">#}
-{#<nav>#}
-{#  <h1>Flaskr</h1>#}
-{#  <ul>#}
-{#    {% if g.user %}#}
-{#      <li><span>{{ g.user['username'] }}</span>#}
-{#      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>#}
-{#    {% else %}#}
-{#      <li><a href="{{ url_for('auth.register') }}">Register</a>#}
-{#      <li><a href="{{ url_for('auth.login') }}">Log In</a>#}
-{#    {% endif %}#}
-{#  </ul>#}
-{#</nav>#}
-{#<section class="content">#}
-{#  <header>#}
-{#    {% block header %}{% endblock %}#}
-{#  </header>#}
-{#  {% for message in get_flashed_messages() %}#}
-{#    <div class="flash">{{ message }}</div>#}
-{#  {% endfor %}#}
-{#  {% block content %}{% endblock %}#}
-{#</section>#}
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +13,7 @@
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="/">
-            Text Clustering Description
+            Description Text Clustering
         </a>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
@@ -54,8 +28,10 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
+                    <a href="{{ url_for('predict.about') }}" class="button is-dark">About</a>
                     {% if g.user %}
-                        <a href="#" class="button is-primary">{{ g.user['username'] }}</a>
+                        <a href="#" class="button is-dark">{{ g.user['username'] }}</a>
+                        <a class="button is-primary" href="{{ url_for('predict.create') }}">+ New</a>
                         <a href="{{ url_for('auth.logout') }}" class="button is-light">Log Out</a>
                     {% else %}
                         <a href="{{ url_for('auth.register') }}" class="button is-primary">
@@ -82,7 +58,8 @@
 <footer class="footer has-background-light">
     <div class="content has-text-centered">
         <p>
-            <strong>Description Text Clustering</strong> by Group 6 UI-01 Microcredential Associate Data Scientist. Source Code is on <a href="https://github.com/lymau/linkedin-clustering">Github</a>.
+            <strong>Description Text Clustering</strong> by Group 6 UI-01 Microcredential Associate Data Scientist.
+            Source Code is on <a href="https://github.com/lymau/linkedin-clustering">Github</a>.
         </p>
     </div>
 </footer>

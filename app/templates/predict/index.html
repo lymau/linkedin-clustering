@@ -1,28 +1,50 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1 class="title">{% block title %}Posts{% endblock %}</h1>
-  {% if g.user %}
-    <a class="action" href="{{ url_for('predict.create') }}">New</a>
-  {% endif %}
+    <h1 class="title has-text-centered">{% block title %}Posts{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
-  {% for post in posts %}
-    <article class="post">
-      <header>
-        <div>
-          <h1>{{ post['title'] }}</h1>
-          <div class="about">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</div>
+    {% for message in get_flashed_messages() %}
+        <div class="notification is-success">
+            <button class="delete"></button>
+            {{ message }}
         </div>
-        {% if g.user['id'] == post['user_id'] %}
-          <a class="action" href="{{ url_for('predict.update', id=post['id']) }}">Edit</a>
+    {% endfor %}
+    {% for post in posts %}
+        <section class="card">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-5"><i class="fa fa-user-circle"
+                                                 aria-hidden="true"></i> {{ post['username'] }}</p>
+                        <p class="subtitle is-6">on {{ post['created'].strftime('%A, %d %B %Y') }}</p>
+                    </div>
+                    <form method="POST" action="{{ url_for('predict.delete', id=post['id']) }}" class="media-right">
+                        {% if post['predicted'] == 0 %}
+                            <span class="tag is-link is-large">Cluster 0</span>
+                        {% elif post['predicted'] == 1 %}
+                            <span class="tag is-primary is-large">Cluster 1</span>
+                        {% elif post['predicted'] == 2 %}
+                            <span class="tag is-warning is-large">Cluster 2</span>
+                        {% elif post['predicted'] == 3 %}
+                            <span class="tag is-danger is-large">Cluster 3</span>
+                        {% endif %}
+
+                        {% if g.user['id'] == post['user_id'] %}
+                            <a href="{{ url_for('predict.update', id=post['id']) }}" class="button is-link">Edit</a>
+                            <input value="Delete" type="submit" class="button is-danger"
+                                   onclick="return confirm('Are you sure?');">
+                        {% endif %}
+                    </form>
+                </div>
+                <div class="content">
+                    {{ post['body'] }}
+                </div>
+            </div>
+        </section>
+        {% if not loop.last %}
+            <hr>
         {% endif %}
-      </header>
-      <p class="body">{{ post['body'] }}</p>
-    </article>
-    {% if not loop.last %}
-      <hr>
-    {% endif %}
-  {% endfor %}
+    {% endfor %}
 {% endblock %}
